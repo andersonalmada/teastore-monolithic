@@ -29,7 +29,7 @@ exporters:
     verbosity: normal
 
   zipkin:
-    endpoint: http://zipkin:9411/api/v2/spans
+    endpoint: http://zipkin.default.svc.cluster.local:9411/api/v2/spans
 
   prometheus:
     endpoint: 0.0.0.0:8889
@@ -37,7 +37,7 @@ exporters:
       enabled: true
 
   loki:
-    endpoint: http://loki:3100/loki/api/v1/push
+    endpoint: http://loki.default.svc.cluster.local:3100/loki/api/v1/push
 
 service:
   pipelines:
