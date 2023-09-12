@@ -18,6 +18,7 @@ services:
       DB_PORT: "3306"
       OTEL_SERVICE_NAME: "teastore"
       OTEL_EXPORTER_OTLP_ENDPOINT: "http://collector:4317"
+      OTEL_METRICS_EXPORTER: "prometheus"
       OTEL_LOGS_EXPORTER: "otlp"
       CATALINA_OPTS: "$CATALINA_OPTS -javaagent:/opentelemetry-javaagent.jar"
     ports:
@@ -29,6 +30,7 @@ services:
     image: otel/opentelemetry-collector-contrib:0.72.0
     volumes:
       - ./otel-config.yaml:/otel-config.yaml
+      - /:/hostfs
     command: ["--config=/otel-config.yaml"]
     expose:
       - "8889" # Prometheus exporter metrics
@@ -37,6 +39,11 @@ services:
       - "4318:4318"
       - "8888"
       - "8889"
+    depends_on:
+      - loki
+      - prometheus
+      - zipkin
+      - grafana
 
   zipkin:
     image: openzipkin/zipkin:latest

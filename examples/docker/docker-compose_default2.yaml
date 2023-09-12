@@ -1,0 +1,17 @@
+version: "3"
+services:
+  collector:
+    image: otel/opentelemetry-collector-contrib:0.72.0
+    volumes:
+      - ./otel-config.yaml:/otel-config.yaml
+      - /:/hostfs
+    command: ["--config=/otel-config.yaml"]
+    depends_on:
+      - prometheus
+
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"

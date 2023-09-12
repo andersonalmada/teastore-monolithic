@@ -1,4 +1,15 @@
 receivers:
+  hostmetrics:
+    root_path: /hostfs
+    collection_interval: 5s
+    scrapers:
+      load:
+      disk:
+      filesystem:
+      memory:
+      network:
+      paging:
+
   otlp:
     protocols:
       grpc:
@@ -26,25 +37,22 @@ processors:
 
 exporters:
   logging:
-    verbosity: normal
+    verbosity: detailed
 
   zipkin:
     endpoint: http://zipkin:9411/api/v2/spans
 
-  prometheus:
-    endpoint: 0.0.0.0:8889
-    resource_to_telemetry_conversion:
-      enabled: true
-
   loki:
     endpoint: http://loki:3100/loki/api/v1/push
+
+  prometheus:
+    endpoint: "0.0.0.0:8889"
 
 service:
   pipelines:
     metrics:
-      receivers: [otlp]
-      processors: [filter]
-      exporters: [prometheus]
+      receivers: [hostmetrics]
+      exporters: [logging, prometheus]
     traces:
       receivers: [otlp]
       exporters: [zipkin]
