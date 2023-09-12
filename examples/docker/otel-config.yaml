@@ -42,6 +42,11 @@ exporters:
   zipkin:
     endpoint: http://zipkin:9411/api/v2/spans
 
+  jaeger:
+    endpoint: jaeger:14250
+    tls:
+      insecure: true
+
   loki:
     endpoint: http://loki:3100/loki/api/v1/push
 
@@ -52,10 +57,10 @@ service:
   pipelines:
     metrics:
       receivers: [hostmetrics]
-      exporters: [logging, prometheus]
+      exporters: [prometheus]
     traces:
       receivers: [otlp]
-      exporters: [zipkin]
+      exporters: [zipkin, jaeger]
     logs:
       receivers: [otlp, filelog]
       processors: [attributes]

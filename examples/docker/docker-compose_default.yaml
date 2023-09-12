@@ -39,11 +39,23 @@ services:
       - "4318:4318"
       - "8888"
       - "8889"
+      - "1888:1888" # pprof extension
+      - "13133:13133" # health_check extension
+      - "55679:55679" # zpages extension
     depends_on:
       - loki
       - prometheus
       - zipkin
+      - jaeger
       - grafana
+
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    restart: always
+    ports:
+      - "16686:16686"
+      - "14268"
+      - "14250"
 
   zipkin:
     image: openzipkin/zipkin:latest
