@@ -9,10 +9,12 @@ metadata:
     io.kompose.service: webui
   name: webui
 spec:
+  type: NodePort
   ports:
     - name: "8080"
       port: 8080
       targetPort: 8080
+      nodePort: 32000
   selector:
     io.kompose.service: webui
 status:

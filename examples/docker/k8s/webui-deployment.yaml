@@ -34,7 +34,7 @@ spec:
             - name: HOST_NAME
               value: webui
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
-              value: http://collector.default.svc.cluster.local:4317
+              value: http://collector:4317
             - name: OTEL_LOGS_EXPORTER
               value: otlp
             - name: OTEL_SERVICE_NAME
