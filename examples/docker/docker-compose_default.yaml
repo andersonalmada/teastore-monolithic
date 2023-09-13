@@ -6,6 +6,9 @@ services:
       - "3306"
     ports:
       - "3306:3306"
+    environment:
+      MYSQL_ROOT_USER: "root"
+      MYSQL_ROOT_PASSWORD: "root"
 
   webui:
     image: docker.io/library/teastore-webui:latest
@@ -43,6 +46,7 @@ services:
       - "13133:13133" # health_check extension
       - "55679:55679" # zpages extension
     depends_on:
+      - db
       - loki
       - prometheus
       - zipkin

@@ -16,8 +16,8 @@
 		<properties>
       		<property name="jakarta.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
         	<property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/teadb"/>
-        	<property name="jakarta.persistence.jdbc.user" value="teauser"/>
-        	<property name="jakarta.persistence.jdbc.password" value="teapassword"/>
+        	<property name="jakarta.persistence.jdbc.user" value="root"/>
+        	<property name="jakarta.persistence.jdbc.password" value="root"/>
  
 		    <property name="eclipselink.logging.level" value="INFO"/> 
 		    <property name="eclipselink.ddl-generation" value="create-tables"/>
