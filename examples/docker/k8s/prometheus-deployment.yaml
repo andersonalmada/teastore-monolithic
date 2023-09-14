@@ -39,6 +39,6 @@ spec:
       restartPolicy: Always
       volumes:
         - hostPath:
-            path: /home/ubuntu/teastore-monolithic/examples/docker/k8s/prometheus.yml
+            path: /home/almada/Desktop/teastore-monolithic/examples/docker/k8s/prometheus.yml
           name: prometheus-hostpath0
 status: {}

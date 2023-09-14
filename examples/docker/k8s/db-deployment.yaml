@@ -24,10 +24,16 @@ spec:
         io.kompose.service: db
     spec:
       containers:
-        - image: andersonalmada/teastore-db:latest
+        - env:
+            - name: MYSQL_ROOT_USER
+              value: "root"
+            - name: MYSQL_ROOT_PASSWORD
+              value: "root"
+          image: andersonalmada/teastore-db:latest
           name: db
           ports:
             - containerPort: 3306
           resources: {}
+
       restartPolicy: Always
 status: {}

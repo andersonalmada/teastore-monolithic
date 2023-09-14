@@ -41,6 +41,6 @@ spec:
       restartPolicy: Always
       volumes:
         - hostPath:
-            path: /home/ubuntu/teastore-monolithic/examples/docker/k8s/otel-config.yaml
+            path: /home/almada/Desktop/teastore-monolithic/examples/docker/k8s/otel-config.yaml
           name: collector-hostpath0
 status: {}
